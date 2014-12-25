@@ -2,6 +2,7 @@ package controller;
 
 import com.csvreader.CsvWriter;
 import common.CommonPattern;
+import common.CommonUtils;
 import edu.uci.ics.crawler4j.crawler.Page;
 import edu.uci.ics.crawler4j.crawler.WebCrawler;
 import edu.uci.ics.crawler4j.parser.HtmlParseData;
@@ -10,7 +11,6 @@ import edu.uci.ics.crawler4j.url.WebURL;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -30,15 +30,9 @@ public class CellPhoneCrawler extends WebCrawler {
 
 		phoneContainer = new HashSet<String>();
 
-		phoneCsv = new File(CSV_PATH + "/" + formatDate(new Date(), "yyyy-MM-dd") + "_phone.csv");
+		phoneCsv = new File(CSV_PATH + "/" + CommonUtils.getInstance().formatDate(new Date(), "yyyy-MM-dd") + "_phone.csv");
 
 		phoneCw = new CsvWriter(new FileWriter(phoneCsv, true), ',');
-	}
-
-	public String formatDate(Date date,String format){
-		if(date ==null) return "";
-		SimpleDateFormat dateFormat = new SimpleDateFormat(format);
-		return dateFormat.format(date);
 	}
 	
 	public boolean shouldVisit(WebURL url) {
