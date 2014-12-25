@@ -1,3 +1,6 @@
+import controller.CellPhoneCrawler;
+import controller.EmailCrawler;
+import controller.QQCrawler;
 import edu.uci.ics.crawler4j.crawler.CrawlConfig;
 import edu.uci.ics.crawler4j.crawler.CrawlController;
 import edu.uci.ics.crawler4j.fetcher.PageFetcher;
@@ -37,6 +40,8 @@ public class Controller {
              * Start the crawl. This is a blocking operation, meaning that your code
              * will reach the line after this only when crawling is finished.
              */
-            controller.start(MailCrawler.class, numberOfCrawlers);    
+            controller.start(EmailCrawler.class, numberOfCrawlers);
+            controller.start(CellPhoneCrawler.class, numberOfCrawlers);
+            controller.start(QQCrawler.class, numberOfCrawlers);
     }
 }
