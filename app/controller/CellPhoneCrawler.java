@@ -22,15 +22,8 @@ public class CellPhoneCrawler extends WebCrawler {
 	private final static String CSV_PATH = "data/crawl/";
 	private CsvWriter phoneCw;
 
-	private static File phoneCsv;
-
-	static Set<String> phoneContainer = null;
-
 	public CellPhoneCrawler() throws IOException {
-
-		phoneContainer = new HashSet<String>();
-
-		phoneCsv = new File(CSV_PATH + "/" + CommonUtils.getInstance().formatDate(new Date(), "yyyy-MM-dd") + "_phone.csv");
+		File phoneCsv = new File(CSV_PATH + "/" + CommonUtils.getInstance().formatDate(new Date(), "yyyy-MM-dd") + "_phone.csv");
 
 		phoneCw = new CsvWriter(new FileWriter(phoneCsv, true), ',');
 	}
@@ -56,6 +49,8 @@ public class CellPhoneCrawler extends WebCrawler {
 		if(phone.length > 1){
 			System.out.println(phone);
 		}
+
+		Set<String> phoneContainer = new HashSet<String>();
 
 		if (page.getParseData() instanceof HtmlParseData) {
 			HtmlParseData htmlParseData = (HtmlParseData) page.getParseData();

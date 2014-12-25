@@ -21,15 +21,9 @@ public class EmailCrawler extends WebCrawler {
 
 	private final static String CSV_PATH = "data/crawl/";
 	private CsvWriter emailCw;
-	private static File emailCsv;
-
-	static Set<String> emailContainer = null;
 
 	public EmailCrawler() throws IOException {
-
-		emailContainer = new HashSet<String>();
-
-		emailCsv = new File(CSV_PATH + "/" + CommonUtils.getInstance().formatDate(new Date(), "yyyy-MM-dd") + "_email.csv");
+		File emailCsv = new File(CSV_PATH + "/" + CommonUtils.getInstance().formatDate(new Date(), "yyyy-MM-dd") + "_email.csv");
 
 		emailCw = new CsvWriter(new FileWriter(emailCsv, true), ',');
 	}
@@ -55,6 +49,8 @@ public class EmailCrawler extends WebCrawler {
 		if(phone.length > 1){
 			System.out.println(phone);
 		}
+
+		Set<String> emailContainer = new HashSet<String>();
 
 		if (page.getParseData() instanceof HtmlParseData) {
 			HtmlParseData htmlParseData = (HtmlParseData) page.getParseData();

@@ -22,15 +22,9 @@ public class QQCrawler extends WebCrawler {
 	private final static String CSV_PATH = "data/crawl/";
 	private CsvWriter qqCw;
 
-	private static File qqCsv;
-
-	static Set<String> qqContainer = null;
-
 	public QQCrawler() throws IOException {
 
-		qqContainer = new HashSet<String>();
-
-		qqCsv = new File(CSV_PATH + "/" + CommonUtils.getInstance().formatDate(new Date(), "yyyy-MM-dd") + "_qq.csv");
+		File qqCsv = new File(CSV_PATH + "/" + CommonUtils.getInstance().formatDate(new Date(), "yyyy-MM-dd") + "_qq.csv");
 
 		qqCw = new CsvWriter(new FileWriter(qqCsv, true), ',');
 	}
@@ -56,6 +50,7 @@ public class QQCrawler extends WebCrawler {
 		if(phone.length > 1){
 			System.out.println(phone);
 		}
+		Set<String> qqContainer = new HashSet<String>();
 
 		if (page.getParseData() instanceof HtmlParseData) {
 			HtmlParseData htmlParseData = (HtmlParseData) page.getParseData();
