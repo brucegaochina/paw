@@ -21,7 +21,6 @@ public class EmailCrawler extends WebCrawler {
 
 	private final static String CSV_PATH = "data/crawl/";
 	private CsvWriter emailCw;
-
 	private static File emailCsv;
 
 	static Set<String> emailContainer = null;
